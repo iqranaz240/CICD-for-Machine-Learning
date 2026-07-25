@@ -32,10 +32,7 @@ hf-login:
 	hf auth login --token $(HF) --add-to-git-credential
 
 push-hub:
-	# 1. Push model weights to Model repo
 	hf upload iqranaz/Drug-Classification ./Model/drug_pipeline.skops drug_pipeline.skops --repo-type=model --commit-message="Sync Model weights"
-	
-	# 2. Push Gradio app files to Space repo
 	hf upload iqranaz/Drug-Classification ./App . --repo-type=space --commit-message="Sync App files"
 	
 deploy: hf-login push-hub
